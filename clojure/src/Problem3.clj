@@ -2,18 +2,19 @@
 ;
 ; What is the largest prime factor of the number 600851475143 ?
 
-(defn prime? [n]
-  "is a number a prime number not including 1"
-  (cond
-    (= n 1) false
-    (and (even? n) (> n 2)) false
-    (= n 2) true
-    ;call function to determine non-special cases
-  ))
-
 (defn factor? [f n]
   "is number f is a factor of number n" (and
    (< f n)
    (not (ratio? (/ n f)))))
 
-(println (prime? 5))
+(defn prime? [n]
+  "is a number a prime number"
+  (cond
+    (= n 1) false
+    (and (even? n) (> n 2)) false
+    (= n 2) true
+    true (not-any? #(factor? % n) (range 3 (- n 1)))
+  ))
+
+;need to start high and work my way down...
+;(println (take 1 (filter #(and (factor? % 13195) (prime? %)) (reverse (range 2 13195)))))
