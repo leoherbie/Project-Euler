@@ -4,10 +4,24 @@
 ; Find the sum of all the multiples of 3 or 5 below 1000.
 
 
+; first attempt
 (println
-  (apply +
+  (time
+   (apply +
     (filter
-      #(or (not (ratio? (/ % 5))) (not (ratio? (/ % 3)))) 
-      (range 3 1000))))
+     #(or (not (ratio? (/ % 5))) (not (ratio? (/ % 3))))
+     (range 3 1000)))))
+
+
+;******************************************************************************************************
+; second attempt (after reading PE solution)
+(defn sum-divisible-by [n target]
+  (let [p (quot target n)]
+    (/ (* n (* p (+ p 1))) 2)
+    )
+  )
+
+(println
+  (time(- (+ (sum-divisible-by 3 999) (sum-divisible-by 5 999)) (sum-divisible-by 15 999))))
 
 

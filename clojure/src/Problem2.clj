@@ -5,6 +5,7 @@
 ;
 ; Find the sum of all the even-valued terms in the sequence which do not exceed four million.
 
+;first attempt
 (defn fib-even-terms-sum [first second]
   "recursively calulates a fibonacci sequence
   adding all even-valued terms while the even terms are <= four million"
@@ -13,4 +14,4 @@
       sum-of-even
       (recur (identity s) (+ f s) (if (even? s) (+ s sum-of-even) (identity sum-of-even))))))
 
-(println (fib-even-terms-sum 1 2))
+(println (time (fib-even-terms-sum 1 2)))
