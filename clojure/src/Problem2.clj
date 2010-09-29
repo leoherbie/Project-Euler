@@ -9,9 +9,21 @@
 (defn fib-even-terms-sum [first second]
   "recursively calulates a fibonacci sequence
   adding all even-valued terms while the even terms are <= four million"
-  (loop [f first s second sum-of-even 0]
+  (loop [f (int first) s (int second) sum-of-even 0]
     (if (> s 4000000)
       sum-of-even
-      (recur (identity s) (+ f s) (if (even? s) (+ s sum-of-even) (identity sum-of-even))))))
+      (recur (int s) (int (+ f s)) (if (even? s) (int (+ s sum-of-even)) (int sum-of-even))))))
 
-(println (time (fib-even-terms-sum 1 2)))
+(println (time (fib-even-terms-sum 1 1)))
+
+;******************************************************************************************************
+; second attempt (after reading PE solution)
+(defn fib-even-terms-sum2 [first second]
+  "recursively calulates a fibonacci sequence
+  adding all even-valued terms while the even terms are <= four million"
+  (loop [f (int first) s (int second) t (int (+ first second)) sum-of-even 0]
+    (if (> s 4000000)
+       sum-of-even
+      (recur (int (+ s t)) (int (+ s t t)) (int (+ s t s t t)) (int (+ sum-of-even t))))))
+
+(println (time (fib-even-terms-sum2 1 1)))
