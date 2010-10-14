@@ -27,7 +27,6 @@
           (and f (prime? f)) f ;f must be largest
           (and f (prime? cur)) (recur (identity n) (inc cur) (identity cur)) ;recurse w/ new prime
           (and f (<= f cur)) largest ;stop here
-          (prime? num) num ;the number is a prime - should check this ahead of time!
           true (recur (identity n) (inc cur) (identity largest)) ;recurse w/ no new prime
   )))))
 
