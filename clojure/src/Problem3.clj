@@ -1,7 +1,9 @@
 ; The prime factors of 13195 are 5, 7, 13 and 29.
 ;
 ; What is the largest prime factor of the number 600851475143 ?
+;******************************************************************************************************
 
+;first attempt
 (defn factor [f n]
   "how many times does is f a factor of n. returns nil if not a factor"
   (let [t (/ n f)] (if (ratio? t) nil t))
@@ -29,4 +31,4 @@
           true (recur (identity n) (inc cur) (identity largest)) ;recurse w/ no new prime
   )))))
 
-(println (largest-prime-factor 600851475143))
+(println (time (largest-prime-factor 600851475143)))

@@ -2,7 +2,7 @@
 ; The sum of these multiples is 23.
 ;
 ; Find the sum of all the multiples of 3 or 5 below 1000.
-
+;******************************************************************************************************
 
 ; first attempt
 (println
@@ -12,8 +12,8 @@
      #(or (not (ratio? (/ % 5))) (not (ratio? (/ % 3))))
      (range 3 1000)))))
 
-
 ;******************************************************************************************************
+
 ; second attempt (after reading PE solution)
 (defn sum-divisible-by [n target]
   (let [p (quot target n)]

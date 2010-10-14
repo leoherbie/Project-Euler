@@ -4,6 +4,7 @@
 ; 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
 ;
 ; Find the sum of all the even-valued terms in the sequence which do not exceed four million.
+;******************************************************************************************************
 
 ;first attempt
 (defn fib-even-terms-sum [first second]
@@ -17,6 +18,7 @@
 (println (time (fib-even-terms-sum 1 1)))
 
 ;******************************************************************************************************
+
 ; second attempt (after reading PE solution)
 (defn fib-even-terms-sum2 [first second]
   "recursively calulates a fibonacci sequence
