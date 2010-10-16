@@ -27,9 +27,10 @@
   digit-size must be >= 2"
    (let [start (create-largest-num-for-length digit-size) end (create-smallest-num-for-length digit-size)
      nums (take (- start (- end 1)) (iterate dec start))]
-     (loop [to-process nums pals []]
+     (loop [to-process nums largest 0]
        (if (empty? to-process)
-         (first (reverse (sort pals)))
-         (recur (rest to-process) (into pals (filter palindrome? (map #(* % (first to-process)) to-process))))))))
+         largest
+         (do (let [cur_largest (first (reverse (sort (filter palindrome? (map #(* % (first to-process)) to-process)))))]
+           (recur (rest to-process) (if (and (not (nil? cur_largest)) (> cur_largest largest)) cur_largest largest))))))))
 
 (println (time (find-largest-palindrome 3)))
