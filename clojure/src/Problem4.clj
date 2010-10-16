@@ -10,51 +10,26 @@
   (apply str (reverse string)))
 
 (defn palindrome? [string]
-  "tests if a string is a palindrome"
-  (= string (str-reverse string)))
-
-(defn progress-size [num]
-  "calulates a numeric length is which to progress with palindrome
-  calulation before skipping back to the beginning.
-  It is pretty arbitrary right now :-)"
-  (Math/floor (/ num 10)))
+  "tests if a string is a palindrome. the object passed in will be coerced into a string for comparison."
+  (= (str string) (str-reverse (str string))))
 
 (defn create-largest-num-for-length [length]
-  "creates the largest number for a passed in length"
+  "creates the largest number for a passed in length (ie. length = 2; returns 99)"
   (Integer/valueOf (apply str (repeat length 9))))
+
+(defn create-smallest-num-for-length [length]
+  "creates the smallest number for a passed in length (ie. length = 2; returns 10)"
+  (Integer/valueOf (str "1" (apply str (repeat (- length 1) 0)))))
 
 (defn find-largest-palindrome [digit-size]
   "finds the largest palindrome from the product of two numbers
   which have a length equaling the digit-size
   digit-size must be >= 2"
-   (let [l (create-largest-num-for-length digit-size) r l]
-     r
-     )
-  )
+   (let [start (create-largest-num-for-length digit-size) end (create-smallest-num-for-length digit-size)
+     nums (take (- start (- end 1)) (iterate dec start))]
+     (loop [to-process nums pals []]
+       (if (empty? to-process)
+         (first (reverse (sort pals)))
+         (recur (rest to-process) (into pals (filter palindrome? (map #(* % (first to-process)) to-process))))))))
 
-;
-;  basic approach  first calculate a progress size by floor(dividing number by 10).
-;  so for 99 it would be 9.  then test 99 * 99 to (99 - progress-size).  if a palindrome is found.
-;  save it b/c it might not be the largest.
-;  Then start from (99-1 * 99-1) to 99-progress-size *  99-progress-size
-;
-;  so assuming no palindrome is found (which we know will be in this case) the following calulations would happen:
-;
-;  99 * 99
-;     .
-;     .
-;     .
-;  99 * 91
-;  .......
-;  98 * 98
-;     .
-;     .
-;     .
-;  91 * 91
-;
-;  also if a palindrome is found during the first pass it IS the largest if the second pass gets to
-;  99-floor(progress-size/2) *  99-floor(progress-size/2)
-;
-;
-
-(println (time (find-largest-palindrome 2)))
+(println (time (find-largest-palindrome 3)))
