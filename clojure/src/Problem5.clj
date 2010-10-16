@@ -3,7 +3,7 @@
 ; What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 ;******************************************************************************************************
 
-;first attempt
+; first attempt
 (defn factor [f n]
   "how many times does is f a factor of n. returns nil if not a factor"
   (let [t (/ n f)] (if (ratio? t) nil t))

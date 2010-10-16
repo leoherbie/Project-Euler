@@ -4,7 +4,7 @@
 ; Find the largest palindrome made from the product of two 3-digit numbers.
 ;******************************************************************************************************
 
-;first attempt
+; first attempt
 (defn str-reverse [string]
   "reverses a string. not unicode safe."
   (apply str (reverse string)))

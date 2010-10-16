@@ -6,7 +6,7 @@
 ; Find the sum of all the even-valued terms in the sequence which do not exceed four million.
 ;******************************************************************************************************
 
-;first attempt
+; first attempt
 (defn fib-even-terms-sum [first second]
   "recursively calulates a fibonacci sequence
   adding all even-valued terms while the even terms are <= four million"

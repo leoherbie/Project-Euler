@@ -3,7 +3,7 @@
 ; What is the largest prime factor of the number 600851475143 ?
 ;******************************************************************************************************
 
-;first attempt
+; first attempt
 (defn factor [f n]
   "how many times does is f a factor of n. returns nil if not a factor"
   (let [t (/ n f)] (if (ratio? t) nil t))
