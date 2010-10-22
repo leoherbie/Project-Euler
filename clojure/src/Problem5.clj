@@ -4,10 +4,8 @@
 ;******************************************************************************************************
 
 ; first attempt
-(defn factor [f n]
-  "how many times does is f a factor of n. returns nil if not a factor"
-  (let [t (/ n f)] (if (ratio? t) nil t))
-  )
+(ns problems
+  (:use [common :only (factor)]))
 
 (defn smallest-num-divisible-by [low high]
   "find the smallest number divisible from l (inclusive) to h (inclusive)"

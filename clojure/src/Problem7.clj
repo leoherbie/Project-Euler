@@ -3,18 +3,8 @@
 ; What is the 10001st prime number?
 
 ; first attempt
-(defn factor [f n]
-  "how many times does is f a factor of n. returns nil if not a factor"
-  (let [t (/ n f)] (if (ratio? t) nil t)))
-
-;FIXME this method needs to be improved badly!
-(defn prime? [n]
-  "is a number a prime number"
-  (cond
-    (= n 1) false
-    (and (even? n) (> n 2)) false
-    (= n 2) true
-    true (not-any? #(factor % n) (range 3 (- n 1)))))
+(ns problems
+  (:use [common :only (prime?, factor)]))
 
 (defn find-nth-prime [n]
   "finds the nths prime. n >= 1"

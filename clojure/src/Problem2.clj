@@ -7,6 +7,8 @@
 ;******************************************************************************************************
 
 ; first attempt
+(ns problems)
+
 (defn fib-even-terms-sum [first second]
   "recursively calulates a fibonacci sequence
   adding all even-valued terms while the even terms are <= four million"

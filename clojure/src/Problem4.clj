@@ -5,6 +5,8 @@
 ;******************************************************************************************************
 
 ; first attempt
+(ns problems)
+
 (defn str-reverse [string]
   "reverses a string. not unicode safe."
   (apply str (reverse string)))

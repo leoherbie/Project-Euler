@@ -4,19 +4,9 @@
 ;******************************************************************************************************
 
 ; first attempt
-(defn factor [f n]
-  "how many times does is f a factor of n. returns nil if not a factor"
-  (let [t (/ n f)] (if (ratio? t) nil t))
-  )
+(ns problems
+  (:use [common :only (prime?, factor)]))
 
-(defn prime? [n]
-  "is a number a prime number"
-  (cond
-    (= n 1) false
-    (and (even? n) (> n 2)) false
-    (= n 2) true
-    true (not-any? #(factor % n) (range 3 (- n 1)))
-  ))
 
 (defn largest-prime-factor [num]
   "finds the largest prime factor of a number passed in"
