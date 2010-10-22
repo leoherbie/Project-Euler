@@ -4,6 +4,6 @@
 
 ; first attempt
 (ns problems
-  (:use [common :only (sum-of-digits-of-num)]))
+  (:use [common :only (sum-of-digits-of)]))
 
-(println (time (sum-of-digits-of-num (BigDecimal. (Math/pow 2 1000)))))
+(println (time (sum-of-digits-of (str (BigDecimal. (Math/pow 2 1000))))))

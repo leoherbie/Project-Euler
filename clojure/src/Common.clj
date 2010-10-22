@@ -27,5 +27,11 @@
     (prime-rule n) true
     true false))
 
-(defn sum-of-digits-of-num [num]
-  (reduce #(+ (Integer/valueOf (str %1)) (Integer/valueOf (str %2))) (str num)))
+(defn- f-of-digits-of [f num]
+  (reduce #(f (Integer/valueOf (str %1)) (Integer/valueOf (str %2))) num))
+
+(defn sum-of-digits-of [num]
+  (f-of-digits-of + num))
+
+(defn product-of-digits-of [num]
+  (f-of-digits-of * num))
