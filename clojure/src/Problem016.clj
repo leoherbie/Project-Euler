@@ -3,9 +3,7 @@
 ; What is the sum of the digits of the number 2¹????
 
 ; first attempt
-(ns problems)
+(ns problems
+  (:use [common :only (sum-of-digits-of-num)]))
 
-(defn sum-of-digits-of-num [num]
-  (reduce #(+ (Integer/valueOf (str %1)) (Integer/valueOf (str %2))) (.toPlainString (BigDecimal. (double num)))))
-
-(println (time (sum-of-digits-of-num (Math/pow 2 1000))))
+(println (time (sum-of-digits-of-num (BigDecimal. (Math/pow 2 1000)))))

@@ -26,3 +26,6 @@
     (= (rem n 3) 0) false
     (prime-rule n) true
     true false))
+
+(defn sum-of-digits-of-num [num]
+  (reduce #(+ (Integer/valueOf (str %1)) (Integer/valueOf (str %2))) (str num)))
