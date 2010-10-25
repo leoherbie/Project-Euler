@@ -31,3 +31,10 @@
       (recur (int (+ s t)) (int (+ s t t)) (int (+ s t s t t)) (int (+ sum-of-even t))))))
 
 (println (time (fib-even-terms-sum2 1 1)))
+
+;******************************************************************************************************
+
+; third attempt (after reading PE solution) - kinda slow but easy to read :-)
+(def fib-sequence (map first (iterate (fn [[a b]] [b (+ a b)]) [1 1])))
+
+(println (time (apply + (filter even? (take-while #(< % 4000000) fib-sequence)))))
