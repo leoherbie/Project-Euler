@@ -96,8 +96,6 @@
 
   ; FIXME could improve this by only keeping track of the highest rather than all products
   (last (sort (flatten (for [x (range 1 20) y (range 1 20)]
-    [(product-right g x y), (product-down g x y), (product-down-diag-right g x y), (product-down-diag-left g x y)] ))))
-
-  )
+    [(product-right g x y), (product-down g x y), (product-down-diag-right g x y), (product-down-diag-left g x y)] )))))
 
 (println (time (find-largest-prod-of-four grid)))

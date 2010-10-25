@@ -19,9 +19,7 @@
 ; second attempt (after reading PE solution)
 (defn sum-divisible-by [n target]
   (let [p (quot target n)]
-    (/ (* n (* p (+ p 1))) 2)
-    )
-  )
+    (/ (* n (* p (+ p 1))) 2)))
 
 (println
   (time(- (+ (sum-divisible-by 3 999) (sum-divisible-by 5 999)) (sum-divisible-by 15 999))))

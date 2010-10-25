@@ -17,7 +17,6 @@
           (and f (prime? f)) f ;f must be largest
           (and f (prime? cur)) (recur (identity n) (inc cur) (identity cur)) ;recurse w/ new prime
           (and f (<= f cur)) largest ;stop here
-          true (recur (identity n) (inc cur) (identity largest)) ;recurse w/ no new prime
-  )))))
+          true (recur (identity n) (inc cur) (identity largest))))))) ;recurse w/ no new prime
 
 (println (time (largest-prime-factor 600851475143)))
