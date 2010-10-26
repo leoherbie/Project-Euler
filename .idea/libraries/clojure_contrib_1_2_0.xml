@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="clojure-1.1.0">
+  <library name="clojure-contrib-1.2.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/clojure.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/clojure-contrib.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

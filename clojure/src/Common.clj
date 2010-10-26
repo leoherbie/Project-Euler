@@ -41,8 +41,7 @@
 
   Returns the first item in a collection where the predicate is true.
   searches in linear time from first to last."
-  (loop [c coll f (first c)]
-    (if (pred f)
-      f
-      (let [new-c (rest c) new-f (first new-c)]
-        (recur new-c new-f)))))
+  (loop [c coll]
+    (if (pred (first c))
+      (first c)
+      (recur (rest c)))))

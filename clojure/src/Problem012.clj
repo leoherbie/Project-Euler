@@ -20,25 +20,30 @@
 
 ;first attempt
 (ns problems
-  (:use [common :only (find-first, factor)]))
+  (:use [common :only (find-first, factor)] [clojure.contrib.pprint]))
 
 (def triangle-sequence (map first
   (iterate
     (fn [[a b]]
-      (let [new-b (inc b)]
-        [(+ new-b a) new-b]))
+      (let [[a b] [(long a) (long b)] new-b (long (inc b))]
+        [(long (+ new-b a)) (long new-b)]))
   [1 1])))
 
 (defn factors [n]
   "retrieves all the factors in n"
     (loop [candidates (range 1 (+ n 1)) facts #{}]
-      (if (empty? candidates)
+      (if (or (nil? candidates) (empty? candidates))
         facts
-        (let [cand (first candidates) a-fact (factor cand n)]
-          (recur (butlast (rest candidates)) (if (not (nil? a-fact)) (conj facts a-fact cand) facts))))))
+        (let [cand (first candidates)
+              a-fact (factor cand n)
+              new-candidates (rest candidates)]
+          (cond
+             (nil? a-fact) (recur new-candidates facts)
+             (not (= a-fact cand)) (recur (range (first new-candidates) a-fact) (conj facts a-fact cand))
+             true (recur new-candidates (conj facts a-fact)))))))
 
 ;should not start at the beginning of the triangle sequence obviously this sucks!
-(println (find-first #(> (count (factors %)) 40) triangle-sequence))
+(println (time (find-first #(> (count (factors %)) 500) triangle-sequence)))
 
 
 
