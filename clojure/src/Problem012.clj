@@ -20,7 +20,7 @@
 
 ;first attempt
 (ns problems
-  (:use [common :only (find-first, factor)] [clojure.contrib.pprint]))
+  (:use [common :only (find-first, factor)]))
 
 (def triangle-sequence (map first
   (iterate
